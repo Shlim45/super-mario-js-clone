@@ -15,11 +15,6 @@ const STATE_WALKING = Symbol('walking');
 const STATE_HIDING  = Symbol('hiding');
 const STATE_PANIC   = Symbol('panic');
 
-const NUDGE_SOUND = new Sound('../../sfx/Thwomp.wav');
-const BUMP_SOUND  = new Sound('../../Bump.wav');
-const KICK_SOUND  = new Sound('../../sfx/Kick.wav');
-const HIT1_SOUND  = new Sound('../../sfx/Squish.wav');
-
 class Behavior extends Trait {
     constructor() {
         super('behavior');

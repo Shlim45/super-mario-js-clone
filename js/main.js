@@ -60,6 +60,7 @@ async function main(canvas) {
     music.setVolume(0.1);
     music.play();
 
+    // temporarily click on canvas to pause background music
     canvas.addEventListener('click', () => {
         console.dir(music);
 
