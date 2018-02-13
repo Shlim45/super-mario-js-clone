@@ -1,0 +1,37 @@
+{
+  "sounds": [
+    {
+      "coin": "Coin.wav"
+    },
+    {
+      "death": "death.wav"
+    },
+    {
+      "die": "Die.wav"
+    },
+    {
+      "gameover": "Game Over.wav"
+    },
+    {
+      "item": "Item.wav"
+    },
+    {
+      "jump": "Jump.wav"
+    },
+    {
+      "kick": "Kick.wav"
+    },
+    {
+      "skid": "Skid.wav"
+    },
+    {
+      "stomp": "Stomp.wav"
+    },
+    {
+      "thwomp": "Thwomp.wav"
+    },
+    {
+      "world-clear": "world_clear.wav"
+    }
+  ]
+}

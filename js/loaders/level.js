@@ -21,6 +21,13 @@ function setupBackgrounds(levelSpec, level, backgroundSprites) {
   });
 }
 
+/* function setupMusic(levelSpec, level, sounds) {
+  const files = [];
+  levelSpec.music.forEach(music => {
+    
+  })
+} */
+
 function setupEntities(levelSpec, level, entityFactory) {
   levelSpec.entities.forEach(({name, pos: [x, y]}) => {
     const createEntity = entityFactory[name];

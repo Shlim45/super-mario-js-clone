@@ -367,5 +367,36 @@
             "name": "goomba",
             "pos": [220, 0]
         }
+    ],
+
+    "music": [
+        {
+            "name": "theme",
+            "file": "Overworld Theme.ogg"
+        },
+        {
+            "name": "hurried-theme",
+            "file": "Hurried Overworld.ogg"
+        },
+        {
+            "name": "star",
+            "file": "Star Theme.ogg"
+        },
+        {
+            "name": "hurried-star",
+            "file": "Hurried Star.ogg"
+        },
+        {
+            "name": "game-over-1",
+            "file": "Game Over 1.ogg"
+        },
+        {
+            "name": "game-over-2",
+            "file": "Game Over 2.ogg"
+        },
+        {
+            "name": "level-clear",
+            "file": "Level Clear.ogg"
+        }
     ]
 }

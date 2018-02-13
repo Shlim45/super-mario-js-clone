@@ -55,8 +55,6 @@ function createMarioFactory(sprite) {
 
     mario.killable.removeAfter = 0;
 
-    mario.killable.sound = new Audio('../../sfx/death.wav');
-
     mario.turbo = setTurboState;
     mario.draw = drawMario;
 

@@ -8,7 +8,17 @@ export function loadImage(url) {
       resolve(image);
     });
     image.src = url;
-  })
+  });
+}
+
+export function loadAudio(url) {
+  return new Promise(resolve => {
+    const audio = new Audio();
+    audio.addEventListener('load', () => {
+      resolve(audio);
+    });
+    audio.src = url;
+  });
 }
 
 export function loadJSON(url) {

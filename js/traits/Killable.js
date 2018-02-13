@@ -6,15 +6,10 @@ export default class Killable extends Trait {
         this.dead = false;
         this.deadTime = 0;
         this.removeAfter = 2;
-        this.sound = null;
     }
 
     kill() {
         this.queue(() => this.dead = true);
-        const sound = this.sound;
-        if (sound) {
-            sound.play();
-        }
     }
 
     revive() {

@@ -2,6 +2,7 @@ import Camera from './Camera.js';
 import Entity from './Entity.js';
 import PlayerController from './traits/PlayerController.js';
 import Timer from './Timer.js';
+import Sound from './Sound.js';
 import {createLevelLoader} from './loaders/level.js';
 import {loadFont} from './loaders/font.js';
 import {loadEntities} from './entities.js';
@@ -17,6 +18,23 @@ function createPlayerEnv(playerEntity) {
     playerEnv.addTrait(playerControl);
     return playerEnv;
 }
+
+/* function initAudio() {
+    return function sound(src) {
+        this.sound = document.createElement('audio');
+        this.sound.src = src;
+        this.sound.setAttribute('preload', 'auto');
+        this.sound.setAttribute('controls', 'none');
+        this.sound.style.display = 'none';
+        document.body.appendChild(this.sound);
+        this.play = function() {
+            this.sound.play();
+        }
+        this.stop = function() {
+            this.sound.pause();
+        }
+    }
+} */
 
 async function main(canvas) {
     const context = canvas.getContext('2d');
@@ -53,6 +71,10 @@ async function main(canvas) {
     }
 
     timer.start();
+    const music = new Sound('../sfx/music.ogg');
+    console.dir(music);
+    music.setVolume(0.1);
+    music.play();
 }
 
 const canvas = document.getElementById('screen');

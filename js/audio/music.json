@@ -1,0 +1,40 @@
+{
+  "music": [
+    {
+      "name": "castle-clear",
+      "file": "Castle Clear.ogg"
+    },
+    {
+      "name": "castle-theme",
+      "file": "Castle Theme.ogg"
+    },
+    {
+      "name": "ending-theme",
+      "file": "Ending Theme.ogg"
+    },
+    {
+      "name": "game-over-1",
+      "file": "Game Over 1.ogg"
+    },
+    {
+      "name": "game-over-2",
+      "file": "Game Over 2.ogg"
+    },
+    {
+      "name": "going-underground",
+      "file": "Going Underground.ogg"
+    },
+    {
+      "name": "hurried-castle",
+      "file": "Hurried Castle.ogg"
+    },
+    {
+      "name": "hurried-going-underground",
+      "file": "Hurried Going Underground.ogg"
+    },
+    {
+      "name": "overworld-theme",
+      "file": "Overworld Theme.ogg"
+    }
+  ]
+}

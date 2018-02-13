@@ -1,4 +1,5 @@
 import {Trait, Sides} from '../Entity.js';
+import Sound from '../Sound.js';
 
 export default class Jump extends Trait {
   constructor() {
@@ -11,6 +12,8 @@ export default class Jump extends Trait {
     this.gracePeriod = 0.1;
     this.speedBoost = 0.2;
     this.velocity = 200;
+
+    this.sound = new Sound('../../sfx/Jump.wav');
   }
 
   get falling() {
@@ -19,6 +22,9 @@ export default class Jump extends Trait {
 
   start() {
     this.requestTime = this.gracePeriod;
+    if (this.ready + this.requestTime >= 0) {
+      this.sound.play();
+    }
   }
 
   cancel() {
