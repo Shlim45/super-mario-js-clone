@@ -3,6 +3,7 @@ import Solid from '../traits/Solid.js';
 import Physics from '../traits/Physics.js';
 import Killable from '../traits/Killable.js';
 import PendulumMove from '../traits/PendulumMove.js';
+import Sound from '../Sound.js';
 import {loadSpriteSheet} from '../loaders.js';
 
 export function loadKoopa() {
@@ -11,8 +12,13 @@ export function loadKoopa() {
 }
 
 const STATE_WALKING = Symbol('walking');
-const STATE_HIDING = Symbol('hiding');
-const STATE_PANIC = Symbol('panic');
+const STATE_HIDING  = Symbol('hiding');
+const STATE_PANIC   = Symbol('panic');
+
+const NUDGE_SOUND = new Sound('../../sfx/Thwomp.wav');
+const BUMP_SOUND  = new Sound('../../Bump.wav');
+const KICK_SOUND  = new Sound('../../sfx/Kick.wav');
+const HIT1_SOUND  = new Sound('../../sfx/Squish.wav');
 
 class Behavior extends Trait {
     constructor() {
@@ -25,6 +31,11 @@ class Behavior extends Trait {
         this.panicSpeed = 300;
 
         this.state = STATE_WALKING;
+        
+        this.NUDGE = new Sound('../../sfx/Thwomp.wav');
+        this.BUMP  = new Sound('../../Bump.wav');
+        this.KICK  = new Sound('../../sfx/Kick.wav');
+        this.HIT1  = new Sound('../../sfx/stomp.wav');
     }
 
     collides(us, them) {
@@ -45,18 +56,25 @@ class Behavior extends Trait {
         if (this.state === STATE_WALKING) {
             them.killable.kill();
         } else if (this.state === STATE_HIDING) {
+            this.KICK.play();
             this.panic(us, them);
         } else if (this.state === STATE_PANIC) {
             const travelDir = Math.sign(us.vel.x);
             const impactDir = Math.sign(us.pos.x - them.pos.x);
             if (travelDir !== 0 && travelDir !== impactDir) {
+                // THIS SOUND ISNT BEHAVING CORRECTLY
+                // TODO: debug
+                this.BUMP.play();
                 them.killable.kill();
+            } else {
+                this.KICK.play();
             }
         }
     }
 
     handleStomp(us, them) {
         if (this.state === STATE_WALKING) {
+            this.HIT1.play();
             this.hide(us);
         } else if (this.state === STATE_HIDING) {
             us.killable.kill();
@@ -132,6 +150,12 @@ function createKoopaFactory(sprite) {
         koopa.addTrait(new PendulumMove());
         koopa.addTrait(new Killable());
         koopa.addTrait(new Behavior());
+
+        // add koopa death sound
+        koopa.killable.setSound('../../sfx/Squish.wav');
+        // add koopa sounds for first hit
+        // add koopa sound for kick shell
+        // add koopa sound for when shell hits stuff (enemies & objects)
 
         koopa.draw = drawKoopa;
 

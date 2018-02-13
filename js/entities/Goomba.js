@@ -58,6 +58,8 @@ function createGoombaFactory(sprite) {
         goomba.addTrait(new Behavior());
         goomba.addTrait(new Killable());
 
+        goomba.killable.setSound('../../sfx/Squish.wav');
+
         goomba.draw = drawGoomba;
 
         return goomba;

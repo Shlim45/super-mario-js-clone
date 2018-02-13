@@ -19,23 +19,6 @@ function createPlayerEnv(playerEntity) {
     return playerEnv;
 }
 
-/* function initAudio() {
-    return function sound(src) {
-        this.sound = document.createElement('audio');
-        this.sound.src = src;
-        this.sound.setAttribute('preload', 'auto');
-        this.sound.setAttribute('controls', 'none');
-        this.sound.style.display = 'none';
-        document.body.appendChild(this.sound);
-        this.play = function() {
-            this.sound.play();
-        }
-        this.stop = function() {
-            this.sound.pause();
-        }
-    }
-} */
-
 async function main(canvas) {
     const context = canvas.getContext('2d');
 
@@ -71,10 +54,21 @@ async function main(canvas) {
     }
 
     timer.start();
+
+    // background music, need to stop this on player death
     const music = new Sound('../sfx/music.ogg');
-    console.dir(music);
     music.setVolume(0.1);
     music.play();
+
+    canvas.addEventListener('click', () => {
+        console.dir(music);
+
+        if (music.playing) {
+            music.pause();
+        } else {
+            music.play();
+        }
+    });
 }
 
 const canvas = document.getElementById('screen');

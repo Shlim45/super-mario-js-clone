@@ -9,14 +9,28 @@ export default class Sound {
     document.body.appendChild(this.sound);
   }
 
+  get playing() {
+    return !this.sound.paused;
+  }
+
   play() {
-    this.sound.currentTime = 0;
-    this.sound.play();
+    if (!this.playing) {
+      // if paused, resume playback
+      this.sound.play();
+    } else {
+      // if a sound effect, start over
+      this.sound.currentTime = 0;
+      this.sound.play();
+    }
   }
 
   stop() {
     this.sound.pause();
     this.sound.currentTime = 0;
+  }
+
+  pause() {
+    this.sound.pause();
   }
 
   setVolume(vol) {

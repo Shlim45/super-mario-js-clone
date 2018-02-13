@@ -22,9 +22,6 @@ export default class Jump extends Trait {
 
   start() {
     this.requestTime = this.gracePeriod;
-    if (this.ready + this.requestTime >= 0) {
-      this.sound.play();
-    }
   }
 
   cancel() {
@@ -43,6 +40,7 @@ export default class Jump extends Trait {
   update(entity, deltaTime) {
     if (this.requestTime > 0) {
       if (this.ready > 0) {
+        this.sound.play();
         this.engageTime = this.duration;
         this.requestTime = 0;
       }
